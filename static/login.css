@@ -1,0 +1,73 @@
+@keyframes bg-change {
+    0% {
+        background-image: url("https://wallpapercave.com/wp/wp5223134.jpg");
+    }
+
+    33% {
+        background-image: url("https://images.squarespace-cdn.com/content/v1/571e7cc14c2f859b347c0167/1521589330665-MVLRC8P6BG8KD07XP2SX/blog+-+anta.jpg?format=2500w");
+    }
+
+    66% {
+        background-image: url("https://images.hdqwalls.com/wallpapers/dark-superman-art-tp.jpg");
+    }
+}
+
+body {
+    background-image: url("https://wallpapercave.com/wp/wp5223134.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation-name: bg-change;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+.container-item{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    width: 25%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 175px;
+    margin-left: 75px;
+}
+
+#heading{
+    font-family: 'Ubuntu', sans-serif;
+    color: coral;
+}
+
+#logo{
+    width: 65px;
+    height: 65px;
+}
+
+.input{
+    width: 270px;
+    height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px black solid;
+    margin: 11px 0px;
+    font-size: 17px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+}
+
+p{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+}
+
+#login-btn{
+    background-color: rgb(114, 183, 240);
+    width: 280px;
+}
