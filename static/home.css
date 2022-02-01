@@ -1,0 +1,205 @@
+#logo{
+    width: 65px;
+    height: 65px;
+    filter: invert(100%);
+}
+
+.navbar{
+    display: flex;
+    background-color: black;
+}
+
+a{
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    font-size: 17px;
+}
+
+.nav-item{
+    margin-right: 45px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.left{
+    margin-left: 10px;
+}
+
+.top{
+    margin-top: 23px;
+}
+
+h2{
+    color: white;
+}
+
+a:hover{
+    color: coral;
+}
+
+.container{
+    width: 50%;
+    margin: auto;
+}
+
+h1{
+    font-size: 55px;
+    color: coral;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.text-input{
+    height: 35px;
+    width: 525px;
+    border: 2px solid coral;
+    border-radius: 5px;
+    text-align: center;
+    background-color: black;
+    color: coral;
+    font-size: 20px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.btn{
+    height: 36px;
+    width: 120px;
+    border-radius: 5px;
+    background-color: black;
+    color: coral;
+    border: coral 2px solid;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn:hover{
+    background-color: coral;
+    color: white;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.navbar::before{
+    content: "";
+    position: absolute;
+    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkWq6h65Lw1QcVhxSjCAY_IUk87Qxn0L53_A&usqp=CAU") no-repeat center center/cover;
+    width: 100%;
+    z-index: -1;
+    /* opacity:0.9; */
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+.movie-img{
+    height: 250px;
+    width: 185px;
+}
+
+.container-items{
+    color: burlywood;
+    width: 17%;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.text-item{
+    height: 70px;
+}
+
+.btn-primary{
+    background-color: black;
+    color: rgb(9, 161, 231);
+    border: 1px solid rgb(9, 161, 231);
+    border-radius: 3px;
+    margin-top: 5px;
+    font-family: 'Ubuntu', sans-serif;
+    width: 90px;
+    height: 30px;
+}
+
+.btn-primary:hover
+{
+    background-color: rgb(9, 161, 231);
+    color: white;
+}
+
+.btn-primary a{
+    color: rgb(9, 161, 231);
+}
+
+.btn-primary a:hover{
+    color: white;
+}
+
+/* dropdown button  */
+.dropbtn {
+    background-color: black;
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 17px;
+    margin-top: -5px;
+    font-weight: bold;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    border: 2px solid coral;
+    font-family: 'Titillium Web', sans-serif;
+    border-radius: 13px;
+    font-size: 17px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: coral;
+    color: white;
+    border-radius: 13px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    color: coral;
+}

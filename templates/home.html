@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieFlex</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href=" {{url_for('static', filename = 'home.css')}} ">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <img src=" {{url_for('static', filename = 'logo.png')}} " alt="logo" id="logo">
+        <h2 class="nav-item left">MovieFlex</h2>
+        <a href="/home" class="nav-item top">Home</a>
+        <a href="/about" class="nav-item top">About Us</a>
+        <div class="dropdown nav-item top">
+            <button class="dropbtn">Genres</button>
+            <div class="dropdown-content">
+                <a href="/Action">Action</a>
+                <a href="/Comedy">Comedy</a>
+                <a href="/Scifi">Science Fiction</a>
+                <a href="/Romance">Romance</a>
+                <a href="/Horror">Horror</a>
+                <a href="/Mystery">Mystery</a>
+                <a href="/Crime">Crime</a>
+            </div>
+        </div>
+        <a href="/top_rated" class="nav-item top">Top Rated</a>
+    </nav>
+
+    <div class="container">
+        <h1>Movie Recommendation System</h1>
+        <form action="/results" method="post">
+            <input type="text" name="movie_name" placeholder="Enter the movie name" class="text-input"
+                autocomplete="off">
+            <br>
+            <input type="submit" value="Recomendations" class="btn">
+        </form>
+    </div>
+
+</body>
+
+</html>
