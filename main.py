@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from reccomender import top_reccomended_movies
 import pickle as pkl
 
@@ -7,6 +7,36 @@ app = Flask(__name__)
 @app.route('/')
 def login():
     return render_template("login.html")
+
+@app.route('/create')
+def create():
+    return render_template("SignUp.html")
+
+@app.route('/check_login', methods=['POST'])
+def check_login():
+    with open('database/users.pkl', 'rb') as f:
+        dict = pkl.load(f)
+    email = request.form['email']
+    password = request.form['password']
+    if (email in dict) and (dict[email][1]==password):
+        return redirect('/home')
+    return redirect('/')
+
+@app.route('/register', methods=['POST'])
+def register():
+    with open('database/users.pkl', 'rb') as f:
+        dict = pkl.load(f)
+    name = request.form['name']
+    email = request.form['email']
+    password = request.form['password']
+    conf_password = request.form['conf_password']
+
+    if (email not in dict) and (password == conf_password):
+        dict[email] = [name, password]
+        with open('database/users.pkl', 'wb') as f:
+            pkl.dump(dict, f)
+        return redirect('/')
+    return redirect('/create')
 
 @app.route("/home")
 def hello():

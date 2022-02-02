@@ -70,4 +70,5 @@ p{
 #login-btn{
     background-color: rgb(114, 183, 240);
     width: 280px;
+    cursor: pointer;
 }
