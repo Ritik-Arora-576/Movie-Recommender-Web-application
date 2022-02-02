@@ -4,6 +4,8 @@ import pickle as pkl
 
 app = Flask(__name__)
 
+name = "anonymous"
+
 @app.route('/')
 def login():
     return render_template("login.html")
@@ -19,6 +21,8 @@ def check_login():
     email = request.form['email']
     password = request.form['password']
     if (email in dict) and (dict[email][1]==password):
+        global name
+        name = dict[email][0]
         return redirect('/home')
     return redirect('/')
 
@@ -38,9 +42,13 @@ def register():
         return redirect('/')
     return redirect('/create')
 
+@app.route('/logout')
+def logout():
+    return redirect('/')
+
 @app.route("/home")
 def hello():
-    return render_template("home.html")
+    return render_template("home.html", name =name)
 
 @app.route("/results", methods=["POST", "GET"])
 def results():
@@ -48,13 +56,13 @@ def results():
         movie = request.form['movie_name']
         movie = top_reccomended_movies(movie)
 
-    return render_template("result.html", movies = movie)
+    return render_template("result.html", movies = movie, name =name)
 
 @app.route('/<int:id>')
 def details(id):
     with open('results/details.pkl', 'rb') as f:
         dict = pkl.load(f)
-    return render_template("details.html", data = dict[id])
+    return render_template("details.html", data = dict[id], name =name)
 
 @app.route('/<string:genre>')
 def genres(genre):
@@ -62,12 +70,12 @@ def genres(genre):
         genre = "Science Fiction"
     with open('results/genres.pkl','rb') as f:
         dict = pkl.load(f)
-    return render_template("genre.html", list = dict[genre])
+    return render_template("genre.html", list = dict[genre], name =name)
 
 @app.route('/top_rated')
 def top():
     with open('results/top_rated.pkl','rb') as f:
         data = pkl.load(f)
-    return render_template('genre.html', list = data)
+    return render_template('genre.html', list = data, name =name)
 
 app.run(debug=True)
