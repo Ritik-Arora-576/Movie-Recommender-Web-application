@@ -1,13 +1,15 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from reccomender import top_reccomended_movies
 import pickle as pkl
+import os
 
 app = Flask(__name__)
-
-name = "anonymous"
+app.secret_key = os.urandom(24)
 
 @app.route('/')
 def login():
+    if 'name' in session:
+        return redirect('/home')
     return render_template("login.html")
 
 @app.route('/create')
@@ -21,8 +23,7 @@ def check_login():
     email = request.form['email']
     password = request.form['password']
     if (email in dict) and (dict[email][1]==password):
-        global name
-        name = dict[email][0]
+        session['name']=dict[email][0]
         return redirect('/home')
     return redirect('/')
 
@@ -44,38 +45,49 @@ def register():
 
 @app.route('/logout')
 def logout():
+    session.pop('name')
     return redirect('/')
 
 @app.route("/home")
 def hello():
-    return render_template("home.html", name =name)
+    if 'name' in session:
+        return render_template("home.html", name =session['name'])
+    return redirect('/')
 
 @app.route("/results", methods=["POST", "GET"])
 def results():
-    if request.method == "POST":
-        movie = request.form['movie_name']
-        movie = top_reccomended_movies(movie)
+    if 'name' in session:
+        if request.method == "POST":
+            movie = request.form['movie_name']
+            movie = top_reccomended_movies(movie)
 
-    return render_template("result.html", movies = movie, name =name)
+        return render_template("result.html", movies = movie, name =session['name'])
+    return redirect('/')
 
 @app.route('/<int:id>')
 def details(id):
-    with open('results/details.pkl', 'rb') as f:
-        dict = pkl.load(f)
-    return render_template("details.html", data = dict[id], name =name)
+    if 'name' in session:
+        with open('results/details.pkl', 'rb') as f:
+            dict = pkl.load(f)
+        return render_template("details.html", data = dict[id], name =session['name'])
+    return redirect('/')
 
 @app.route('/<string:genre>')
 def genres(genre):
-    if genre=="Scifi":
-        genre = "Science Fiction"
-    with open('results/genres.pkl','rb') as f:
-        dict = pkl.load(f)
-    return render_template("genre.html", list = dict[genre], name =name)
+    if 'name' in session:
+        if genre=="Scifi":
+            genre = "Science Fiction"
+        with open('results/genres.pkl','rb') as f:
+            dict = pkl.load(f)
+        return render_template("genre.html", list = dict[genre], name =session['name'])
+    return redirect('/')
 
 @app.route('/top_rated')
 def top():
-    with open('results/top_rated.pkl','rb') as f:
-        data = pkl.load(f)
-    return render_template('genre.html', list = data, name =name)
+    if 'name' in session:
+        with open('results/top_rated.pkl','rb') as f:
+            data = pkl.load(f)
+        return render_template('genre.html', list = data, name =session['name'])
+    return redirect('/')
 
 app.run(debug=True)
