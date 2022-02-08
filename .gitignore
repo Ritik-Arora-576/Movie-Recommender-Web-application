@@ -25,5 +25,8 @@ htmlcov/
 .coverage.*
 *,cover
 
+# Results directory
+results/
+
 # Pickle
 *.pkl
