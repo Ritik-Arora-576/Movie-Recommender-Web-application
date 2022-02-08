@@ -1,8 +1,8 @@
-# Movie-Recommender-Web-application-
+# Movie-Recommender-Web-App
 
-Created a Web application using Flask Framework which can recommend movies while entering the movie name in a search engine.
+Created a Web Application using Flask Framework which can recommend movies while entering the movie name in a search engine.
 
-## Create a virtual environement
+## Create a virtual environment
 
 `python -m virtualenv .env`
 <br>
@@ -11,7 +11,7 @@ Created a Web application using Flask Framework which can recommend movies while
 
 ## Create a folder to store output of ML model
 
-Create a folder `results/` and download the files from the following drive link:
+Create a folder `results/` at the root and download the files from the following drive link:
 https://drive.google.com/drive/folders/1K_gXdMVZhunNJqyb3Q7_AZWnntQbP1PP?usp=sharing
 
 ## Create a folder to store users
@@ -20,7 +20,7 @@ Create a file `database/users.pkl` at the root
 
 ## Start the project
 
-Run &nbsp; `user_db.py`
+Run `user_db.py`
 <br>
-Run &nbsp; `main.py`
+Run `main.py`
 <br>
